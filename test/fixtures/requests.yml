@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  institution_id: 1
+  education_program_id: 1
+  department_id: 1
+  education_form_id: 1
+  language_id: 1
+  subject_id: 1
+  question: MyText
+  isDeleted: false
+
+two:
+  user_id: 1
+  institution_id: 1
+  education_program_id: 1
+  department_id: 1
+  education_form_id: 1
+  language_id: 1
+  subject_id: 1
+  question: MyText
+  isDeleted: false

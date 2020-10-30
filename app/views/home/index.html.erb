@@ -1,0 +1,109 @@
+<div class="container">
+    <h1 class="text-center">Личная карточка абитуриента КарТУ</h1>
+    <h3 class="text-center">Пожалуйста, будьте внимательны при заполнении формы</h3>
+    <div id='ajax_loader' style="position: fixed; display: none; left: 50%; top: 50%; z-index: 1000001;">
+        <%= image_tag 'ajax-loader.gif', id: 'loading-indicator' %>
+    </div>
+    <hr>
+    <form method="post" action="/request">
+        <div class="row">
+            <% if @user.errors.any? %>
+                <div class="col-8 offset-2 mt-2">
+                    <h3 class="text-danger text-center">Ошибка! Проверьте правильность заполнения полей</h3>
+                    <ul>
+                        <% @user.errors.full_messages.each do |message| %>
+                            <li class="text-danger"><%= message %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+            <% if @request.errors.any? %>
+                <div class="col-8 offset-2 mt-2">
+                    <ul>
+                        <% @request.errors.full_messages.each do |message| %>
+                            <li class="text-danger"><%= message %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+            <div class="col-4 offset-2">
+                <input type="text" class="form-control" name="request[first_name]" placeholder="Имя*" value="<%= @user.first_name %>">
+            </div>
+            <div class="col-4">
+                <input type="text" class="form-control" name="request[last_name]" placeholder="Фамилия*">
+            </div>
+            <div class="col-8 offset-2 mt-2">
+                <input type="text" class="form-control" name="request[email]" placeholder="Email*">
+            </div>
+            <div class="col-8 offset-2 mt-2">
+                <input type="text" class="form-control" name="request[phone]" placeholder="Телефон">
+            </div>
+            <div class="col-8 offset-2 mt-2">
+                <%= select_tag "request[region]", options_from_collection_for_select(Region.order("name ASC").all, :id, :name), { :class => 'form-control', :id => "regionSelect", :include_blank => "Регион" } %>
+            </div>
+            <div class="col-8 offset-2 mt-2">
+                <select class="form-control" name="request[city]" id="citySelect">
+                    <option disabled selected>Город/поселок/село</option>
+                </select>
+            </div>
+            <div class="col-8 offset-2 mt-2">
+                <%= select_tag "request[institution_type]", options_from_collection_for_select(InstitutionType.all, :id, :name), { :class => 'form-control', :id => "institutionTypeSelect", :include_blank => "Вид учебного заведения" } %>
+            </div>
+            <div class="col-8 offset-2 mt-2">
+                <select class="form-control" name="request[institution]" id="institutionSelect">
+                    <option disabled selected>Учебное заведение</option>
+                </select>
+            </div>
+            <div class="col-8 offset-2 mt-2">
+                <%= select_tag "request[education_form]", options_from_collection_for_select(EducationForm.all, :id, :name), { :class => 'form-control', :id => "educationFormSelect", :include_blank => "Форма обучения" } %>
+            </div>
+            <div class="col-8 offset-2 mt-2">
+                <select class="form-control" name="request[education_program]" id="educationProgramSelect">
+                    <option disabled selected>Предполагаемая образовательная программа</option>
+                </select>
+            </div>
+            <div class="col-8 offset-2 mt-2">
+                <select class="form-control" name="request[subject]" id="subjectSelect">
+                    <option disabled selected>Профильные предметы</option>
+                </select>
+            </div>
+            <div class="col-8 offset-2 mt-2">
+                <%= select_tag "request[language]", options_from_collection_for_select(Language.all, :id, :name), { :class => 'form-control', :id => "languageSelect", :include_blank => "Язык обучения" } %>
+            </div>
+            <div class="col-8 offset-2 mt-2">
+                <%= select_tag "request[department]", options_from_collection_for_select(Department.order("name ASC").all, :id, :name), { :class => 'form-control', :id => "departmentSelect", :include_blank => "Кафедра-консультант" } %>
+            </div>
+            <div class="col-8 offset-2 mt-2">
+                <textarea class="form-control" placeholder="Ваш вопрос" id="exampleFormControlTextarea1" name="request[question]" rows="3"></textarea>
+            </div>
+            <div class="col-8 offset-2 mt-2 text-center">
+                <%= rucaptcha_image_tag(alt: 'Captcha') %>
+                <button type="button" id="refresh" class="btn btn-info">Не вижу код</button>
+                <%= rucaptcha_input_tag(class: 'form-control', placeholder: 'Введите код с картинки') %>
+            </div>
+            <div class="col-8 offset-2 mt-2">
+                <input type="submit" id="submitBtn" class="btn btn-block btn-primary" value="Отправить">
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="successfulModal" class="modal fade show" aria-modal="true" style="display: none;">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </div>				
+                <h4 class="modal-title w-100">Отлично!</h4>	
+            </div>
+            <div class="modal-body">
+                <p class="text-center">Ваши заявка успешно отправлена!</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
