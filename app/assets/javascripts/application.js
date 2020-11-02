@@ -17,42 +17,6 @@
 //= require_tree .
 
 $(document).ready(() => {
-    // $("#submitBtn").click(() => {
-    //     var form = $("form");
-    //     // formData = toSimpleJson(form.serialize());
-    //     // function toSimpleJson(serializedData) {
-    //     //     var ar1 = serializedData.split("&");
-    //     //     var json = "{";
-    //     //     for (var i = 0; i<ar1.length; i++) {
-    //     //         var ar2 = ar1[i].split("=");
-    //     //         json += i > 0 ? ", " : "";
-    //     //         json += "\"" + ar2[0] + "\" : ";
-    //     //         json += "\"" + (ar2.length < 2 ? "" : ar2[1]) + "\"";
-    //     //     }
-    //     //     json += "}";
-    //     //     return json;
-    //     // }
-
-    //     $.ajax({
-    //         url: "/request",
-    //         type: "POST",
-    //         data: {
-    //             request: {
-    //                 "first_name": $("")
-    //             }
-    //         },
-    //         success: (response) => {
-    //             debugger
-    //             if (response.success == true) {
-    //                 $('#successfulModal').modal('show');
-    //             }
-    //             else {
-
-    //             }
-    //         }
-    //     });
-    // });
-    
     var region = "", city = 0, institution_type = 0, eduForm = 0
 
     $(document).ajaxSend(function(event, request, settings) {

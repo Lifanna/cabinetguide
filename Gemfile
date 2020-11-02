@@ -68,3 +68,5 @@ gem 'font-awesome-sass', '~> 4.7.0'
 gem 'whenever'
 gem 'rufus-scheduler'
 gem 'rucaptcha'
+
+gem 'rubyXL'

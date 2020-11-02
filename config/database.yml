@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: cabinetguide_production
-  username: cabinetguide
-  password: <%= ENV['CABINETGUIDE_DATABASE_PASSWORD'] %>
+  database: admissiondb
