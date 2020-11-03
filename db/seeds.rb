@@ -77,10 +77,11 @@ Department.create([
     { name: 'ТСС' },
     { name: 'АПП' },
     { name: 'КИЯК' },
-    { name: 'Вышмат' },
+    { name: 'Высшая математика' },
     { name: 'ПТ' },
     { name: 'ТТиЛС' },
     { name: 'ВК' },
+    { name: 'Другой источник информации' },
 ])
 
 Manager.create([
@@ -343,19 +344,19 @@ Institution.create([
 
     # Абайский
     { name: '№15 п.Карабас', institution_type_id: 1, city_id: 12 },
-    { name: 'СШ №5 им.Кунанбаева', institution_type_id: 1, city_id: 12 },
+    { name: 'СШ №5 им.Кунанбаева', institution_type_id: 1, city_id: 1 },
     { name: 'Акбастауская ОШ', institution_type_id: 1, city_id: 12 },
     { name: 'ОШ № 4', institution_type_id: 1, city_id: 12 },
     { name: 'Топарская ОШ', institution_type_id: 1, city_id: 12 },
-    { name: 'СШ № 1', institution_type_id: 1, city_id: 12 },
-    { name: 'СШ №12', institution_type_id: 1, city_id: 12 },
-    { name: 'СШ им.Абая', institution_type_id: 1, city_id: 12 },
-    { name: 'СШ №14', institution_type_id: 1, city_id: 12 },
+    { name: 'СШ № 1', institution_type_id: 1, city_id: 1 },
+    { name: 'СШ №12', institution_type_id: 1, city_id: 1 },
+    { name: 'СШ им.Абая', institution_type_id: 1, city_id: 1 },
+    { name: 'СШ №14', institution_type_id: 1, city_id: 1 },
     { name: 'Есенгельдинская ОШ', institution_type_id: 1, city_id: 12 },
     { name: 'СШ им.Корниенко', institution_type_id: 1, city_id: 12 },
     { name: 'ГУ Дубовская ОСШ', institution_type_id: 1, city_id: 12 },
     { name: 'Коксунская с.Коксу', institution_type_id: 1, city_id: 12 },
-    { name: 'СШ-гимназия №10', institution_type_id: 1, city_id: 12 },
+    { name: 'СШ-гимназия №10', institution_type_id: 1, city_id: 10 },
     { name: 'СШ им. Момышулы', institution_type_id: 1, city_id: 12 },
     { name: 'Дзержинская ОШ', institution_type_id: 1, city_id: 12 },
     { name: 'Мерей с. Юбилейное', institution_type_id: 1, city_id: 12 },
