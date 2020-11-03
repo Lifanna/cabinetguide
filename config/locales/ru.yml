@@ -102,6 +102,9 @@ ru:
       errors:
         empty_text: "Комментарий не сохранен, текст не должен быть пустым."
     devise:
+      failure:
+        admin_user:
+          not_found_in_database: "Неправильный логин или пароль"
       username:
         title: "Имя пользователя"
       email:
