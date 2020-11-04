@@ -35,7 +35,7 @@ $(document).ready(() => {
             success: (response) => {
                 $("#citySelect").html('')
                 if (response.length <= 0) {
-                    $("#citySelect").append("<option selected disabled>Нет городов/населенных пунктов</option>");
+                    $("#citySelect").append("<option selected disabled>Нет городов/населенных пунктов, укажите его в вопросе</option>");
                     return
                 }
                 response.forEach((city) => {
@@ -72,10 +72,10 @@ $(document).ready(() => {
                 $("#subjectSelect").html('')
 
                 if (response.institutions.length <= 0) {
-                    $("#institutionSelect").append("<option selected disabled>Выберите вид учебного заведения/регион/город</option>");
+                    $("#institutionSelect").append("<option selected disabled>Не найдено учебное заведение, укажите его в вопросе</option>");
                 }
                 if (response.subjects.length <= 0) {
-                    $("#subjectSelect").append("<option selected disabled>Выберите вид учебного заведения</option>");
+                    $("#subjectSelect").append("<option selected disabled>Не найдены профильные предметы, укажите их в вопросе</option>");
                     return
                 }
                 
@@ -108,7 +108,7 @@ $(document).ready(() => {
             success: (response) => {
                 $("#educationProgramSelect").html('')
                 if (response.length <= 0) {
-                    $("#educationProgramSelect").append("<option selected disabled>Выберите форму обучения</option>");
+                    $("#educationProgramSelect").append("<option selected disabled>Не найдена образовательная программа, укажите ее в вопросе</option>");
                     return
                 }
                 
