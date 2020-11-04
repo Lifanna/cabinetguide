@@ -59,6 +59,7 @@ class HomeController < ApplicationController
       if @request.save
         redirect_to action: 'success'
       else
+        @request.errors.add(:base, 'Не заполнены необходимые поля')
         raise ActiveRecord::Rollback
         render 'index'
       end
