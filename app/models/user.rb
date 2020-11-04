@@ -5,5 +5,5 @@ class User < ApplicationRecord
     validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "введите корректный email-адрес" }
     validates :first_name, uniqueness: { scope: [ :last_name, :email ] }
 
-    has_one :request, dependent: :destroy
+    has_one :request, dependent: :destroy, :inverse_of => :user
 end

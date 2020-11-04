@@ -18,21 +18,26 @@ class HomeController < ApplicationController
     #   params[:request][:phone],
     # )
 
-    @user = User.find_or_create_by(
-      first_name: params[:request][:first_name],
-      last_name: params[:request][:last_name],
-      email: params[:request][:email],
-      phone: params[:request][:phone]
-    )
-    
-    # user.email = params[:request][:email]
-    # user.phone = params[:request][:phone]
+    Request.transaction do
+      # @user = User.find_or_create_by(
+      #   first_name: params[:request][:first_name],
+      #   last_name: params[:request][:last_name],
+      #   email: params[:request][:email],
+      #   phone: params[:request][:phone]
+      # )
+      
+      # user.email = params[:request][:email]
+      # user.phone = params[:request][:phone]
 
-    @user.save
-    @request = Request.new
-    
-    if @user.valid?
-      @request.user_id = @user.id
+      @user = User.new
+      @request = Request.new
+      if !verify_rucaptcha?
+        @request.errors.add(:base, 'Неверно введен код с картинки')
+        render 'index' and return
+      end
+
+      
+      # if @user.valid?
       @request.institution_id = params[:request][:institution]
       @request.education_program_id = params[:request][:education_program]
       @request.department_id = params[:request][:department]
@@ -40,15 +45,23 @@ class HomeController < ApplicationController
       @request.language_id = params[:request][:language]
       @request.subject_id = params[:request][:subject]
       @request.question = params[:request][:question]
-    end
+      @user = User.find_or_create_by(
+        first_name: params[:request][:first_name],
+        last_name: params[:request][:last_name],
+        email: params[:request][:email],
+        phone: params[:request][:phone]
+      )
+      @request.user = @user
+        # @user.save
+      # end
 
-    # saved = @request.save
-
-    if verify_rucaptcha? && @request.save
-      redirect_to action: 'success'
-    else
-      @request.errors.add(:base, 'Неверно введен код с картинки')
-      render 'index'
+      # saved = @request.save
+      if @request.save
+        redirect_to action: 'success'
+      else
+        raise ActiveRecord::Rollback
+        render 'index'
+      end
     end
   end
 
