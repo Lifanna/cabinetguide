@@ -49,7 +49,8 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'activeadmin', '~> 1.0.0.pre4'
+# gem 'activeadmin', '~> 1.0.0.pre4'
+gem 'activeadmin', '>= 1.1', '<= 1.3'
 gem 'devise'
 
 # gem 'bootstrap-sass', '~> 2.1.1.0'
