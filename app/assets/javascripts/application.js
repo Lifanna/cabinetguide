@@ -34,7 +34,9 @@ $(document).ready(() => {
             url: "/get_cities_by_region?region=" + region,
             success: (response) => {
                 $("#citySelect").html('')
+                $("#citySelect").append("<option selected disabled>Город/поселок/село</option>");
                 if (response.length <= 0) {
+                    $("#citySelect").html('')
                     $("#citySelect").append("<option selected disabled>Нет городов/населенных пунктов, укажите его в вопросе</option>");
                     return
                 }
@@ -67,14 +69,17 @@ $(document).ready(() => {
             type: "GET",
             url: "/get_institutions?city=" + city + "&institution_type=" + institution_type,
             success: (response) => {
-                debugger
                 $("#institutionSelect").html('')
                 $("#subjectSelect").html('')
-
+                $("#institutionSelect").append("<option selected disabled>Учебное заведение</option>");
+                $("#subjectSelect").append("<option selected disabled>Профильные предметы</option>");
+                
                 if (response.institutions.length <= 0) {
+                    $("#institutionSelect").html('')
                     $("#institutionSelect").append("<option selected disabled>Не найдено учебное заведение, укажите его в вопросе</option>");
                 }
                 if (response.subjects.length <= 0) {
+                    $("#subjectSelect").html('')
                     $("#subjectSelect").append("<option selected disabled>Не найдены профильные предметы, укажите их в вопросе</option>");
                     return
                 }
