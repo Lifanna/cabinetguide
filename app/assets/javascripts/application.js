@@ -112,7 +112,9 @@ $(document).ready(() => {
             url: "/get_education_programs?education_form=" + eduForm,
             success: (response) => {
                 $("#educationProgramSelect").html('')
+                $("#educationProgramSelect").append("<option selected disabled>Образовательная программа</option>");
                 if (response.length <= 0) {
+                    $("#educationProgramSelect").html('')
                     $("#educationProgramSelect").append("<option selected disabled>Не найдена образовательная программа, укажите ее в вопросе</option>");
                     return
                 }
