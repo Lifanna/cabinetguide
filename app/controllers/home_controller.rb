@@ -17,7 +17,7 @@ class HomeController < ApplicationController
     #   params[:request][:email],
     #   params[:request][:phone],
     # )
-
+    save_successful = false
     Request.transaction do
       # @user = User.find_or_create_by(
       #   first_name: params[:request][:first_name],
@@ -33,10 +33,11 @@ class HomeController < ApplicationController
       @request = Request.new
       if !verify_rucaptcha?
         @request.errors.add(:base, 'Неверно введен код с картинки')
-        render 'index' and return
+        puts "CODE PROBLEM:  #{@request.errors}"
+        # render 'index'
+        raise ActiveRecord::Rollback
       end
 
-      
       # if @user.valid?
       @request.institution_id = params[:request][:institution]
       @request.education_program_id = params[:request][:education_program]
@@ -56,13 +57,22 @@ class HomeController < ApplicationController
       # end
 
       # saved = @request.save
-      if @request.save
-        redirect_to action: 'success'
-      else
+      unless @request.save
         @request.errors.add(:base, 'Не заполнены необходимые поля')
+        @request.errors.full_messages.each {|error|
+          puts "FFFFFF:               #{error}"
+        }
         raise ActiveRecord::Rollback
-        render 'index'
+        # render 'index'
       end
+
+      save_successful = true
+    end
+
+    if save_successful
+      redirect_to action: 'success'
+    else
+      render 'index'
     end
   end
 
@@ -93,7 +103,7 @@ class HomeController < ApplicationController
   end
 
   def get_institutions
-    @institutions = Institution.where(city_id: params[:city], institution_type_id: params[:institution_type])
+    @institutions = Institution.where(city_id: params[:city], institution_type_id: params[:institution_type]).order("institutions.name ASC")
     @subjects = Subject.where(institution_type_id: params[:institution_type])
 
     render json: {

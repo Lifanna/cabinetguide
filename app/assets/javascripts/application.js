@@ -35,6 +35,8 @@ $(document).ready(() => {
             success: (response) => {
                 $("#citySelect").html('')
                 $("#citySelect").append("<option selected disabled>Город/поселок/село</option>");
+                $("#institutionTypeSelect").prop('selectedIndex', 0);
+
                 if (response.length <= 0) {
                     $("#citySelect").html('')
                     $("#citySelect").append("<option selected disabled>Нет городов/населенных пунктов, укажите его в вопросе</option>");
@@ -151,5 +153,4 @@ $(document).ready(() => {
     $("#refresh").click(() => {
         $("img.rucaptcha-image").attr("src", '/rucaptcha/?locale=ru?t=' + Date.now());
     });
-
 });
