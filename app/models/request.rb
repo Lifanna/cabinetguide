@@ -1,5 +1,5 @@
 class Request < ApplicationRecord
-    # validates :user_id, presence: true
+    validates :user_id, presence: true
 
     belongs_to :user, :inverse_of => :request
     belongs_to :institution, optional: true
