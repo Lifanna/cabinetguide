@@ -31,12 +31,12 @@ class HomeController < ApplicationController
 
       @user = User.new
       @request = Request.new
-      if !verify_rucaptcha?
-        @request.errors.add(:base, 'Неверно введен код с картинки')
-        puts "CODE PROBLEM:  #{@request.errors}"
-        # render 'index'
-        raise ActiveRecord::Rollback
-      end
+      # if !verify_rucaptcha?
+      #   @request.errors.add(:base, 'Неверно введен код с картинки')
+      #   puts "CODE PROBLEM:  #{@request.errors}"
+      #   # render 'index'
+      #   raise ActiveRecord::Rollback
+      # end
 
       # if @user.valid?
       @request.institution_id = params[:request][:institution]
