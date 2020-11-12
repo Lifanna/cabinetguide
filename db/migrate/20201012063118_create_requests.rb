@@ -2,12 +2,12 @@ class CreateRequests < ActiveRecord::Migration[5.1]
   def change
     create_table :requests do |t|
       t.integer :user_id
-      t.integer :institution_id
-      t.integer :education_program_id
-      t.integer :department_id
-      t.integer :education_form_id
-      t.integer :language_id
-      t.integer :subject_id
+      t.integer :institution_id, :default => 1
+      t.integer :education_program_id, :default => 1
+      t.integer :department_id, :default => 30
+      t.integer :education_form_id, :default => 7
+      t.integer :language_id, :default => 2
+      t.integer :subject_id, :default => 1
       t.text :question
       t.boolean :isDeleted
 

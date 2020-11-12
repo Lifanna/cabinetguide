@@ -142,6 +142,7 @@ EducationForm.create([
     { name: 'докторантура' },
     { name: 'второе высшее' },
     { name: 'дистанционная сокращенная' },
+    { name: 'не определился' },
 ])
 
 EducationProgram.create([
