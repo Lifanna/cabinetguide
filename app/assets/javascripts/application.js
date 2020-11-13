@@ -80,29 +80,29 @@ $(document).ready(() => {
                     $("#institutionSelect").html('')
                     $("#institutionSelect").append("<option selected disabled>Не найдено учебное заведение, укажите его в вопросе</option>");
                 }
+                else
+                    response.institutions.forEach((institution) => {
+                        var $option = $("<option/>", {
+                            value: institution.id,
+                            text: institution.name
+                        });
+
+                        $("#institutionSelect").append($option);
+                    });
+
                 if (response.subjects.length <= 0) {
                     $("#subjectSelect").html('')
                     $("#subjectSelect").append("<option selected disabled>Не найдены профильные предметы, укажите их в вопросе</option>");
-                    return
                 }
-                
-                response.institutions.forEach((institution) => {
-                    var $option = $("<option/>", {
-                        value: institution.id,
-                        text: institution.name
+                else
+                    response.subjects.forEach((subject) => {
+                        var $option = $("<option/>", {
+                            value: subject.id,
+                            text: subject.name
+                        });
+        
+                        $("#subjectSelect").append($option);
                     });
-
-                    $("#institutionSelect").append($option);
-                });
-
-                response.subjects.forEach((subject) => {
-                    var $option = $("<option/>", {
-                        value: subject.id,
-                        text: subject.name
-                    });
-    
-                    $("#subjectSelect").append($option);
-                });
             }
         });
     });

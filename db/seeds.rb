@@ -279,6 +279,12 @@ Subject.create([
     { name: 'Химия/Физика', institution_type_id: 1 },
     { name: 'Творческий экзамен', institution_type_id: 1 },
 
+    { name: 'Математика/Физика', institution_type_id: 2 },
+    { name: 'Математика/География', institution_type_id: 2 },
+    { name: 'Биология/Химия', institution_type_id: 2 },
+    { name: 'Химия/Физика', institution_type_id: 2 },
+    { name: 'Творческий экзамен', institution_type_id: 2 },
+
     { name: 'другой профильный предмет', institution_type_id: 4 },
 ])
 
