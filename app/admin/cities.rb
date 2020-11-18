@@ -1,3 +1,3 @@
 ActiveAdmin.register City do
-    # permit_params :first_name, :last_name, :email, :phone
+    permit_params :name, :region_id, :isDeleted
 end
