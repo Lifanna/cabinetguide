@@ -37,6 +37,14 @@ $(document).ready(() => {
                 $("#citySelect").append("<option selected disabled>Город/поселок/село</option>");
                 $("#institutionTypeSelect").prop('selectedIndex', 0);
 
+                $("#subjectSelect").html('')
+                $("#institutionSelect").html('');
+                $("#institutionSelect").append("<option selected disabled>Учебное заведение</option>");
+                $("#subjectSelect").append("<option selected disabled>Профильные предметы</option>");
+
+                $("#educationProgramSelect").html('')
+                $("#educationProgramSelect").append("<option selected disabled>Образовательная программа</option>");
+
                 if (response.length <= 0) {
                     $("#citySelect").html('')
                     $("#citySelect").append("<option selected disabled>Нет городов/населенных пунктов, укажите его в вопросе</option>");
@@ -53,13 +61,20 @@ $(document).ready(() => {
             }
         });
     });
-    
-    $("#citySelect").change((event) => {
-        city = event.target.value;
-    });
-    
+
     $("#citySelect").change((event) => {
         var city_selected = $('#regionSelect option:selected');
+        city = event.target.value;
+
+        $("#institutionTypeSelect").prop('selectedIndex', 0);
+        $("#institutionSelect").html('');
+        $("#subjectSelect").html('');
+        $("#institutionSelect").append("<option selected disabled>Учебное заведение</option>");
+        $("#subjectSelect").append("<option selected disabled>Профильные предметы</option>");
+
+        $("#educationProgramSelect").html('')
+        $("#educationProgramSelect").append("<option selected disabled>Образовательная программа</option>");
+
         if (!city_selected) {
             alert("Выберите город/населенный пункт!")
         }
@@ -76,6 +91,9 @@ $(document).ready(() => {
                 $("#institutionSelect").append("<option selected disabled>Учебное заведение</option>");
                 $("#subjectSelect").append("<option selected disabled>Профильные предметы</option>");
                 
+                $("#educationProgramSelect").html('')
+                $("#educationProgramSelect").append("<option selected disabled>Образовательная программа</option>");
+
                 if (response.institutions.length <= 0) {
                     $("#institutionSelect").html('')
                     $("#institutionSelect").append("<option selected disabled>Не найдено учебное заведение, укажите его в вопросе</option>");
@@ -122,7 +140,6 @@ $(document).ready(() => {
                 }
                 
                 response.forEach((eduProgram) => {
-                    
                     var $option = $("<option/>", {
                         value: eduProgram.id,
                         text: eduProgram.name
