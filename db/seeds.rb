@@ -692,7 +692,6 @@ Institution.create([
     { name: 'Карагандинский технико-строительный колледж', institution_type_id: 2, city_id: 2 },
     { name: 'Карагандинский гуманитарный колледж', institution_type_id: 2, city_id: 2 },
     { name: 'Карагандинский колледж моды', institution_type_id: 2, city_id: 2 },
-    { name: 'Карагандинский агротехнический колледж', institution_type_id: 2, city_id: 2},
     { name: 'Карагандинский транспортно-технологический колледж', institution_type_id: 2, city_id: 2},
     { name: 'Карагандинский машиностроительный колледж', institution_type_id: 2, city_id: 2},
     { name: 'Карагандинский Медицинский Интерколледж', institution_type_id: 2, city_id: 2},
@@ -700,14 +699,10 @@ Institution.create([
     { name: 'Медицинский колледж при Карагандинском медицинском университет', institution_type_id: 2, city_id: 2},
     { name: 'Карагандинский медико-технический колледж', institution_type_id: 2, city_id: 2},
     { name: 'Карагандинский колледж актуального образования «Болашак»', institution_type_id: 2, city_id: 2},
-    { name: 'Медицинский колледж при Карагандинском медицинском университете', institution_type_id: 2, city_id: 2},
     { name: 'Колледж «Международная Бизнес-Академия»  ', institution_type_id: 2, city_id: 2 },
-    { name: 'Карагандинский профессионально-технический колледж', institution_type_id: 2, city_id: 2 },
     { name: 'Многопрофильный гуманитарно-технический колледж', institution_type_id: 2, city_id: 2 },
     { name: 'Карагандинский коммерческий колледж', institution_type_id: 2, city_id: 2 },
     { name: 'Карагандинский колледж экономики и статистики', institution_type_id: 2, city_id: 2 },
-    { name: 'Карагандинский коммерческий колледж', institution_type_id: 2, city_id: 2 },
-    { name: 'Карагандинский технико-строительный колледж', institution_type_id: 2, city_id: 2 },
     { name: 'Карагандинский агротехнический колледж', institution_type_id: 2, city_id: 2 },
 
     # Сатпаев

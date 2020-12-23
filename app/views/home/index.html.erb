@@ -1,6 +1,7 @@
 <div class="container">
-    <h1 class="text-center">Личная карточка абитуриента КарТУ</h1>
-    <h3 class="text-center">Пожалуйста, будьте внимательны при заполнении формы</h3>
+    <h1 class="text-center">Әлеуетті талапкердің жеке карточкасы/</h1>
+    <h1 class="text-center">Личная карточка потенциального абитуриента</h1>
+    <h4 class="text-center">барлық деректерді жеке куәлік бойынша толтыру қажет / все данные заполнять по удостоверению личности*</h4>
     <div id='ajax_loader' style="position: fixed; display: none; left: 50%; top: 50%; z-index: 1000001;">
         <%= image_tag 'ajax-loader.gif', id: 'loading-indicator' %>
     </div>
@@ -28,10 +29,10 @@
             <% end %>
             <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
             <div class="col-4 offset-2">
-                <input type="text" class="form-control" name="request[first_name]" placeholder="Имя*" value="<%= @user.first_name %>">
+                <input type="text" class="form-control" name="request[first_name]" placeholder="Аты (Имя)*" value="<%= @user.first_name %>">
             </div>
             <div class="col-4">
-                <input type="text" class="form-control" name="request[last_name]" placeholder="Фамилия*">
+                <input type="text" class="form-control" name="request[last_name]" placeholder="Тегі (Фамилия)*">
             </div>
             <div class="col-8 offset-2 mt-2">
                 <input type="text" class="form-control" name="request[email]" placeholder="Email*">
@@ -40,46 +41,46 @@
                 <input type="text" class="form-control" name="request[phone]" placeholder="Телефон">
             </div>
             <div class="col-8 offset-2 mt-2">
-                <%= select_tag "request[region]", options_from_collection_for_select(Region.order("name ASC").all, :id, :name), { :class => 'form-control', :id => "regionSelect", :include_blank => "Регион" } %>
+                <%= select_tag "request[region]", options_from_collection_for_select(Region.order("name ASC").all, :id, :name), { :class => 'form-control', :id => "regionSelect", :include_blank => "Аймақ (Регион)" } %>
             </div>
             <div class="col-8 offset-2 mt-2">
                 <select class="form-control" name="request[city]" id="citySelect">
-                    <option disabled selected>Город/поселок/село</option>
+                    <option disabled selected>Қала/кент/ауыл (Город/поселок/село)</option>
                 </select>
             </div>
             <div class="col-8 offset-2 mt-2">
-                <%= select_tag "request[institution_type]", options_from_collection_for_select(InstitutionType.all, :id, :name), { :class => 'form-control', :id => "institutionTypeSelect", :include_blank => "Вид учебного заведения" } %>
+                <%= select_tag "request[institution_type]", options_from_collection_for_select(InstitutionType.all, :id, :name), { :class => 'form-control', :id => "institutionTypeSelect", :include_blank => "Оқу орнының түрі / Вид учебного заведения" } %>
             </div>
             <div class="col-8 offset-2 mt-2">
                 <select class="form-control" name="request[institution]" id="institutionSelect">
-                    <option disabled selected>Учебное заведение</option>
+                    <option disabled selected>Оқу орны (Учебное заведение)</option>
                 </select>
             </div>
             <div class="col-8 offset-2 mt-2">
-                <%= select_tag "request[education_form]", options_from_collection_for_select(EducationForm.all, :id, :name), { :class => 'form-control', :id => "educationFormSelect", :include_blank => "Форма обучения" } %>
+                <%= select_tag "request[education_form]", options_from_collection_for_select(EducationForm.all, :id, :name), { :class => 'form-control', :id => "educationFormSelect", :include_blank => "Оқу түрі (Форма обучения)" } %>
             </div>
             <div class="col-8 offset-2 mt-2">
                 <select class="form-control" name="request[education_program]" id="educationProgramSelect">
-                    <option disabled selected>Предполагаемая образовательная программа</option>
+                    <option disabled selected>Болжамдық білім беру бағдарламасы (Предполагаемая образовательная программа)</option>
                 </select>
             </div>
             <div class="col-8 offset-2 mt-2">
                 <select class="form-control" name="request[subject]" id="subjectSelect">
-                    <option disabled selected>Профильные предметы</option>
+                    <option disabled selected>Бейіндік пәндер (Профильные предметы)</option>
                 </select>
             </div>
             <div class="col-8 offset-2 mt-2">
-                <%= select_tag "request[language]", options_from_collection_for_select(Language.all, :id, :name), { :class => 'form-control', :id => "languageSelect", :include_blank => "Язык обучения" } %>
+                <%= select_tag "request[language]", options_from_collection_for_select(Language.all, :id, :name), { :class => 'form-control', :id => "languageSelect", :include_blank => "Оқу тілі (Язык обучения)" } %>
             </div>
             <div class="col-8 offset-2 mt-2">
-                <%= select_tag "request[department]", options_from_collection_for_select(Department.order("name ASC").all, :id, :name), { :class => 'form-control', :id => "departmentSelect", :include_blank => "Кафедра-консультант" } %>
+                <%= select_tag "request[department]", options_from_collection_for_select(Department.order("name ASC").all, :id, :name), { :class => 'form-control', :id => "departmentSelect", :include_blank => "Кеңес беруші кафедра - ЖОО туралы ақпарат кімнен алынды (Кафедра-консультант - от кого получена информация о ВУЗе)" } %>
             </div>
             <div class="col-8 offset-2 mt-2">
-                <textarea class="form-control" placeholder="Ваш вопрос" id="exampleFormControlTextarea1" name="request[question]" rows="3"></textarea>
+                <textarea class="form-control" placeholder="Сіздің сұрақ/жауап (Ваш вопрос/ответ)" id="exampleFormControlTextarea1" name="request[question]" rows="3"></textarea>
             </div>
             
             <div class="col-8 offset-2 mt-2">
-                <input type="submit" id="submitBtn" class="btn btn-block btn-primary" value="Отправить">
+                <input type="submit" id="submitBtn" class="btn btn-block btn-primary" value="Жіберу (Отправить)">
             </div>
         </div>
     </form>

@@ -103,7 +103,7 @@ class HomeController < ApplicationController
   end
 
   def get_institutions
-    @institutions = Institution.where(city_id: params[:city], institution_type_id: params[:institution_type]).order("institutions.name ASC")
+    @institutions = Institution.select('DISTINCT(name), *').where(city_id: params[:city], institution_type_id: params[:institution_type]).order("institutions.name ASC")
     @subjects = Subject.where(institution_type_id: params[:institution_type])
 
     render json: {

@@ -34,20 +34,20 @@ $(document).ready(() => {
             url: "/get_cities_by_region?region=" + region,
             success: (response) => {
                 $("#citySelect").html('')
-                $("#citySelect").append("<option selected disabled>Город/поселок/село</option>");
+                $("#citySelect").append("<option selected disabled>Қала/кент/ауыл (Город/поселок/село)</option>");
                 $("#institutionTypeSelect").prop('selectedIndex', 0);
 
                 $("#subjectSelect").html('')
                 $("#institutionSelect").html('');
-                $("#institutionSelect").append("<option selected disabled>Учебное заведение</option>");
-                $("#subjectSelect").append("<option selected disabled>Профильные предметы</option>");
+                $("#institutionSelect").append("<option selected disabled>Оқу орны (Учебное заведение)</option>");
+                $("#subjectSelect").append("<option selected disabled>Бейіндік пәндер (Профильные предметы)</option>");
 
                 $("#educationProgramSelect").html('')
-                $("#educationProgramSelect").append("<option selected disabled>Образовательная программа</option>");
+                $("#educationProgramSelect").append("<option selected disabled>Болжамдық білім беру бағдарламасы (Предполагаемая образовательная программа)</option>");
 
                 if (response.length <= 0) {
                     $("#citySelect").html('')
-                    $("#citySelect").append("<option selected disabled>Нет городов/населенных пунктов, укажите его в вопросе</option>");
+                    $("#citySelect").append("<option selected disabled>Қала/кент/ауыл жоқ, сұрақ/жауап бөлімінде көрсетіңіз / Нет городов/населенных пунктов, укажите его в вопросе</option>");
                     return
                 }
                 response.forEach((city) => {
@@ -69,11 +69,11 @@ $(document).ready(() => {
         $("#institutionTypeSelect").prop('selectedIndex', 0);
         $("#institutionSelect").html('');
         $("#subjectSelect").html('');
-        $("#institutionSelect").append("<option selected disabled>Учебное заведение</option>");
-        $("#subjectSelect").append("<option selected disabled>Профильные предметы</option>");
+        $("#institutionSelect").append("<option selected disabled>Оқу орны (Учебное заведение)</option>");
+        $("#subjectSelect").append("<option selected disabled>Бейіндік пәндер (Профильные предметы)</option>");
 
         $("#educationProgramSelect").html('')
-        $("#educationProgramSelect").append("<option selected disabled>Образовательная программа</option>");
+        $("#educationProgramSelect").append("<option selected disabled>Болжамдық білім беру бағдарламасы (Предполагаемая образовательная программа)</option>");
 
         if (!city_selected) {
             alert("Выберите город/населенный пункт!")
@@ -88,15 +88,15 @@ $(document).ready(() => {
             success: (response) => {
                 $("#institutionSelect").html('')
                 $("#subjectSelect").html('')
-                $("#institutionSelect").append("<option selected disabled>Учебное заведение</option>");
-                $("#subjectSelect").append("<option selected disabled>Профильные предметы</option>");
+                $("#institutionSelect").append("<option selected disabled>Оқу орны (Учебное заведение)</option>");
+                $("#subjectSelect").append("<option selected disabled>Бейіндік пәндер (Профильные предметы)</option>");
                 
                 $("#educationProgramSelect").html('')
-                $("#educationProgramSelect").append("<option selected disabled>Образовательная программа</option>");
+                $("#educationProgramSelect").append("<option selected disabled>Болжамдық білім беру бағдарламасы (Предполагаемая образовательная программа)</option>");
 
                 if (response.institutions.length <= 0) {
                     $("#institutionSelect").html('')
-                    $("#institutionSelect").append("<option selected disabled>Не найдено учебное заведение, укажите его в вопросе</option>");
+                    $("#institutionSelect").append("<option selected disabled>Оқу орны табылған жоқ, сұрақ/жауап бөлімінде көрсетіңіз / Не найдено учебное заведение, укажите его в вопросе</option>");
                 }
                 else
                     response.institutions.forEach((institution) => {
@@ -110,7 +110,7 @@ $(document).ready(() => {
 
                 if (response.subjects.length <= 0) {
                     $("#subjectSelect").html('')
-                    $("#subjectSelect").append("<option selected disabled>Не найдены профильные предметы, укажите их в вопросе</option>");
+                    $("#subjectSelect").append("<option selected disabled>Бейіндік пәндер табылған жоқ, сұрақ/жауап бөлімінде көрсетіңіз / Не найдены профильные предметы, укажите их в вопросе</option>");
                 }
                 else
                     response.subjects.forEach((subject) => {
@@ -132,10 +132,10 @@ $(document).ready(() => {
             url: "/get_education_programs?education_form=" + eduForm,
             success: (response) => {
                 $("#educationProgramSelect").html('')
-                $("#educationProgramSelect").append("<option selected disabled>Образовательная программа</option>");
+                $("#educationProgramSelect").append("<option selected disabled>Болжамдық білім беру бағдарламасы (Предполагаемая образовательная программа)</option>");
                 if (response.length <= 0) {
                     $("#educationProgramSelect").html('')
-                    $("#educationProgramSelect").append("<option selected disabled>Не найдена образовательная программа, укажите ее в вопросе</option>");
+                    $("#educationProgramSelect").append("<option selected disabled>Болжамдық білім беру бағдарламасы табылған жоқ, сұрақ/жауап бөлімінде көрсетіңіз / Не найдена предполагаемая образовательная программа, укажите ее в вопросе</option>");
                     return
                 }
                 
