@@ -19,7 +19,7 @@ class HomeController < ApplicationController
     # )
     save_successful = false
 
-    if (Switch.find(1).is_active == false)
+    if (Switch.first.is_active == false)
       return
     end
 
