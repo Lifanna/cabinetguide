@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201012063118) do
+ActiveRecord::Schema.define(version: 20210616141258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,6 +127,12 @@ ActiveRecord::Schema.define(version: 20201012063118) do
     t.string "name"
     t.integer "institution_type_id"
     t.boolean "isDeleted"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "switches", force: :cascade do |t|
+    t.boolean "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -18,6 +18,11 @@ class HomeController < ApplicationController
     #   params[:request][:phone],
     # )
     save_successful = false
+
+    if (Switch.find(1).is_active == false)
+      return
+    end
+
     Request.transaction do
       # @user = User.find_or_create_by(
       #   first_name: params[:request][:first_name],

@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
     config.xls_builder.i18n_scope = [:activerecord, :attributes, :user]
-    permit_params :first_name, :last_name, :email, :phone
+    permit_params :all
     config.xls_builder.header_format = { weight: :bold,
         color: :blue }
 
